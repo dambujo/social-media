@@ -1,22 +1,32 @@
-import './Login.scss';
+import './Register.scss';
 
-const Login = () => {
+const Register = () => {
   return (
-    <div className="login">
+    <div className="register">
       <div className="card">
         <div className="left">
-          <h1>Hello World.</h1>
+          <h1>Dambujo Social</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
             quod.
           </p>
-          <span>Don't have an account</span>
-          <button>Register</button>
+          <span>Do you have an account?</span>
+          <button>Login</button>
         </div>
         <div className="right">
-          <h1>Login</h1>
+          <h1>Register</h1>
           <form>
+            <input
+              type="text"
+              placeholder="Full Name"
+              id=""
+            />
+            <input
+              type="email"
+              placeholder="E-mail"
+              id=""
+            />
             <input
               type="text"
               placeholder="Username"
@@ -27,7 +37,7 @@ const Login = () => {
               placeholder="Password"
               id=""
             />
-            <button>Login</button>
+            <button>Register</button>
           </form>
         </div>
       </div>
@@ -35,4 +45,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
