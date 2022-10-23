@@ -1,9 +1,56 @@
-import { Login, Register } from './pages';
+import { Home, Login, Profile, Register } from './pages';
 
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Outlet,
+  Navigate,
+} from 'react-router-dom';
+import { LeftBar, Navbar, RightBar } from './components';
 
 function App() {
+  const currentUser = true;
+
+  const Layout = () => {
+    return (
+      <div>
+        <Navbar />
+        <div style={{ display: 'flex' }}>
+          <LeftBar />
+          <Outlet />
+          <RightBar />
+        </div>
+      </div>
+    );
+  };
+
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    }
+    return children;
+  };
+
   const router = createBrowserRouter([
+    {
+      path: '/',
+      element: (
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      ),
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/profile/:id',
+          element: <Profile />,
+        },
+      ],
+    },
     {
       path: '/login',
       element: <Login />,
